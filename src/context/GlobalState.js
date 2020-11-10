@@ -49,7 +49,7 @@ const addBox = (box) => {
 
 const editBox = (box) =>{
   dispatch({
-    type: 'EDIT_USER',
+    type: 'EDIT_BOX',
     payload: box
   })
 }

@@ -15,13 +15,14 @@ export default (state, action) => {
                 const updatedBox = action.payload;
                 const updatedBoxes = state.boxes.map(
                     box =>{
-                        if (box.id == updatedBox.id) {
+                        if (parseInt(box.id) === parseInt(updatedBox.id)) {
                             return updatedBox;
                         }// else
                         return box;
                     }
                 )
                 return{
+                    ...state,
                     boxes : updatedBoxes
                 }
                 /*const filteredBoxes = state.boxes.filter(

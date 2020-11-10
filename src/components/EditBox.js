@@ -6,11 +6,6 @@ import {GlobalContext} from '../context/GlobalState';
 
 export const EditBox = (route) => {
 
-    const [name, setName] = useState("");
-    const [location, setLocation] = useState("");
-    const [destination, setDestination] = useState("");
-    const [weight, setWeight] = useState("");
-
     const [selectedBox, setSelectedBox] = useState({
         id: null,
         name: "",
@@ -22,21 +17,22 @@ export const EditBox = (route) => {
     const {editBox, boxes} = useContext(GlobalContext);
     const history = useHistory();
 
-    const currentBoxId = route.match.params.id;
+    const currentBoxId = Number(route.match.params.id);
     
     useEffect( ()=>{
         const boxId = currentBoxId;
-        const selectedBox = boxes.find(box => box.id === Number(boxId))
+        const selectedBox = boxes.find(box => box.id === parseInt(boxId));
         setSelectedBox(selectedBox);
     },[ currentBoxId, boxes ]);
  
-    const onChange = e => {
+    const onChange = (e) => {
+        console.log(selectedBox)
+        console.log("selectedBox")
         setSelectedBox({ ...selectedBox, [e.target.name]: e.target.value })
     };
     const onSubmit = e => {
         e.preventDefault();
         //id: uuid(),
-        
         editBox(selectedBox);
 
         history.push('/');
