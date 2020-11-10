@@ -15,7 +15,7 @@ export default (state, action) => {
                 const updatedBox = action.payload;
                 const updatedBoxes = state.boxes.map(
                     box =>{
-                        if (parseInt(box.id) === parseInt(updatedBox.id)) {
+                        if (box.id === updatedBox.id) {
                             return updatedBox;
                         }// else
                         return box;

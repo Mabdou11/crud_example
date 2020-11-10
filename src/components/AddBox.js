@@ -10,14 +10,13 @@ export const AddBox = () => {
     const [destination, setDestination] = useState("");
     const [weight, setWeight] = useState("");
 
-    const {addBox, boxes} = useContext(GlobalContext);
+    const {addBox, } = useContext(GlobalContext);
     const history = useHistory();
 
     const onSubmit = e => {
         e.preventDefault();
-        //id: uuid(),
         const newBox = {
-            id: boxes[boxes.length-1].id +1,
+            id: uuid(),
             name,
             location,
             destination,

@@ -7,7 +7,7 @@ import {GlobalContext} from '../context/GlobalState';
 export const EditBox = (route) => {
 
     const [selectedBox, setSelectedBox] = useState({
-        id: null,
+        id: "",
         name: "",
         location: "",
         destination: "",
@@ -17,13 +17,16 @@ export const EditBox = (route) => {
     const {editBox, boxes} = useContext(GlobalContext);
     const history = useHistory();
 
-    const currentBoxId = Number(route.match.params.id);
+    const currentBoxId = route.match.params.id;
     
     useEffect( ()=>{
         const boxId = currentBoxId;
-        const selectedBox = boxes.find(box => box.id === parseInt(boxId));
+        const selectedBox = boxes.find(box => box.id === boxId);
         setSelectedBox(selectedBox);
-    },[ currentBoxId, boxes ]);
+        console.log(boxId);
+        console.log(selectedBox);
+        console.log("xxxxxxxxxxxx")
+        },[ currentBoxId, boxes ]);
  
     const onChange = (e) => {
         console.log(selectedBox)
