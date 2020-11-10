@@ -23,21 +23,14 @@ export const EditBox = (route) => {
         const boxId = currentBoxId;
         const selectedBox = boxes.find(box => box.id === boxId);
         setSelectedBox(selectedBox);
-        console.log(boxId);
-        console.log(selectedBox);
-        console.log("xxxxxxxxxxxx")
         },[ currentBoxId, boxes ]);
  
     const onChange = (e) => {
-        console.log(selectedBox)
-        console.log("selectedBox")
         setSelectedBox({ ...selectedBox, [e.target.name]: e.target.value })
     };
     const onSubmit = e => {
         e.preventDefault();
-        //id: uuid(),
         editBox(selectedBox);
-
         history.push('/');
     }
 
